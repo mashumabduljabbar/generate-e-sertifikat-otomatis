@@ -1,0 +1,13 @@
+SELECT 
+    a.attenders_name, a.attenders_email,  
+    COUNT(attenders_email)
+FROM
+    tbl_attenders a
+GROUP BY a.attenders_email
+HAVING COUNT(a.attenders_email) > 1;
+
+DELETE t1 FROM tbl_attenders t1
+INNER JOIN tbl_attenders t2 
+WHERE 
+    t1.attenders_id < t2.attenders_id AND 
+    t1.attenders_email = t2.attenders_email;
